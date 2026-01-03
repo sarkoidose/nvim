@@ -1,30 +1,19 @@
--- theme choice is saved in a file for persistence on restart
--- could use a plugin instead, but hey, this is more fun
--- lualine theme gets stored separately due to possible naming differences
+-- lua/config/theme.lua
+function _G.load_theme()
+  vim.opt.termguicolors = true
+  vim.opt.background = "dark"
 
-local theme_file = vim.fn.stdpath("config") .. "/lua/config/saved_theme"
+  require("gruvbox").setup({
+    contrast = "hard", -- Hard est indispensable pour le fond de ton terminal #282828
+    palette_overrides = {
+        dark0_hard = "#1d2021", -- Un fond encore plus profond pour Neovim
+    },
+    italic = {
+      strings = true,
+      comments = true,
+      operators = false,
+    },
+  })
 
-_G.load_theme = function()
-    local file = io.open(theme_file, "r")
-	if file then
-		vim.cmd("colorscheme " .. file:read("*l"))
-		require("lualine").setup({ options = { theme = file:read("*l") } })
-	file:close() end
-end
-
-local themes = { --add more themes here, if installed
-	{ "catppuccin", "catppuccin" },
-	{ "gruvbox", "gruvbox" },
-	{ "pywal16", "pywal16-nvim" },
-}
-
-local current_theme_index = 1
-
-_G.switch_theme = function()
-	current_theme_index = current_theme_index % #themes + 1
-	local colorscheme, lualine = unpack(themes[current_theme_index])
-	vim.cmd("colorscheme " .. colorscheme)
-	require("lualine").setup({ options = { theme = lualine } })
-	local file = io.open(theme_file, "w")
-	if file then file:write(colorscheme .. "\n" .. lualine) file:close() end
+  vim.cmd("colorscheme gruvbox")
 end
