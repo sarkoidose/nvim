@@ -1,3 +1,7 @@
+-- Force l'affichage permanent et les couleurs vraies (RTX 4070)
+vim.opt.termguicolors = true
+vim.opt.showtabline = 2
+
 local status, bufferline = pcall(require, "bufferline")
 if not status then return end
 

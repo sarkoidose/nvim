@@ -1,5 +1,8 @@
--- bread's neovim config - GRUVBOX ULTIMATE
--- auto install vim-plug and plugins
+-- =============================================================================
+-- 🚀 BREAD'S NEOVIM : FORTERESSE GRUVBOX (32-CORES OPTIMIZED)
+-- =============================================================================
+
+-- 1. BOOTSTRAP (Vim-Plug)
 local data_dir = vim.fn.stdpath('data')
 if vim.fn.empty(vim.fn.glob(data_dir .. '/site/autoload/plug.vim')) == 1 then
     vim.cmd('silent !curl -fLo ' .. data_dir .. '/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
@@ -7,51 +10,51 @@ if vim.fn.empty(vim.fn.glob(data_dir .. '/site/autoload/plug.vim')) == 1 then
     vim.cmd('autocmd VimEnter * PlugInstall --sync | source $MYVIMRC')
 end
 
-local vim = vim
 local Plug = vim.fn['plug#']
+vim.loader.enable() -- Turbo-boost au démarrage
 
-vim.loader.enable() -- Cache de performance
-
+-- 2. DÉCLARATION DES PLUGINS
 vim.call('plug#begin')
--- Thèmes
-Plug('ellisonleao/gruvbox.nvim', { ['as'] = 'gruvbox' }) 
--- Plugins UI
-Plug('nvim-lualine/lualine.nvim')
-Plug('nvim-tree/nvim-web-devicons')
-Plug('folke/which-key.nvim')
-Plug('akinsho/bufferline.nvim', { ['tag'] = '*' }) -- ✅ Remplacement de Barbar
-Plug('goolord/alpha-nvim')
-Plug('norcalli/nvim-colorizer.lua')
--- Outils
-Plug('nvim-treesitter/nvim-treesitter')
-Plug('mfussenegger/nvim-lint')
-Plug('nvim-tree/nvim-tree.lua')
-Plug('windwp/nvim-autopairs')
-Plug('lewis6991/gitsigns.nvim')
-Plug('numToStr/Comment.nvim')
-Plug('ibhagwan/fzf-lua')
-Plug('numToStr/FTerm.nvim')
--- Syntaxe
-Plug('ron-rs/ron.vim')
-Plug('MeanderingProgrammer/render-markdown.nvim')
-Plug('emmanueltouzery/decisive.nvim')
-Plug('folke/twilight.nvim')
--- Intelligence & LSP
-Plug('williamboman/mason.nvim')
-Plug('williamboman/mason-lspconfig.nvim')
-Plug('neovim/nvim-lspconfig')
---  Autocomplétion
-Plug('hrsh7th/nvim-cmp')
-Plug('hrsh7th/cmp-nvim-lsp')
-Plug('L3MON4D3/LuaSnip')
+    -- UI & Thème
+    Plug('ellisonleao/gruvbox.nvim', { ['as'] = 'gruvbox' }) 
+    Plug('nvim-lualine/lualine.nvim')
+    Plug('nvim-tree/nvim-web-devicons')
+    Plug('akinsho/bufferline.nvim', { ['tag'] = '*' })
+    Plug('goolord/alpha-nvim')
+    Plug('norcalli/nvim-colorizer.lua')
+    Plug('folke/which-key.nvim')
+
+    -- Outils & Navigation
+    Plug('nvim-treesitter/nvim-treesitter')
+    Plug('mfussenegger/nvim-lint')
+    Plug('nvim-tree/nvim-tree.lua')
+    Plug('windwp/nvim-autopairs')
+    Plug('lewis6991/gitsigns.nvim')
+    Plug('numToStr/Comment.nvim')
+    Plug('ibhagwan/fzf-lua')
+    Plug('numToStr/FTerm.nvim')
+
+    -- Syntaxe & Langages
+    Plug('ron-rs/ron.vim')
+    Plug('MeanderingProgrammer/render-markdown.nvim')
+    Plug('emmanueltouzery/decisive.nvim')
+    Plug('folke/twilight.nvim')
+
+    -- Cerveau (LSP) & Complétion
+    Plug('williamboman/mason.nvim')
+    Plug('williamboman/mason-lspconfig.nvim')
+    Plug('neovim/nvim-lspconfig')
+    Plug('hrsh7th/nvim-cmp')
+    Plug('hrsh7th/cmp-nvim-lsp')
+    Plug('L3MON4D3/LuaSnip')
 vim.call('plug#end')
 
--- 1. Bases (Indépendantes des plugins)
+-- 3. CHARGEMENT DES BASES
 require("config.theme")
 require("config.options")
 require("config.autocmd")
 
--- 2. Plugins UI essentiels (Chargement immédiat)
+-- 4. CHARGEMENT DES PLUGINS UI (Immédiat)
 require("plugins.alpha")
 require("plugins.colorizer")
 require("plugins.comment")
@@ -60,9 +63,8 @@ require("plugins.lualine")
 require("plugins.nvim-lint")
 require("plugins.render-markdown")
 
--- 3. Chargement différé (+200ms pour la stabilité)
+-- 5. CHARGEMENT DIFFÉRÉ (+200ms pour la réactivité Ghostty)
 vim.defer_fn(function() 
-    -- Chargement des plugins lourds
     require("plugins.autopairs")
     require("plugins.fterm")
     require("plugins.fzf-lua")
@@ -70,19 +72,13 @@ vim.defer_fn(function()
     require("plugins.treesitter")
     require("plugins.twilight")
     require("plugins.which-key")
-    
-    -- 📂 GESTION DES ONGLETS (Stable 0.11)
     require("plugins.bufferline")
-
-    -- 🧠 ACTIVATION DU CERVEAU (LSP)
     require("plugins.lsp")
 
-    -- Tentative sécurisée de chargement des mappings
-    local ok, err = pcall(require, "config.mappings")
-    if not ok then
-        print("Erreur dans mappings.lua: " .. err)
-    end
+    -- Mappings finaux
+    pcall(require, "config.mappings")
 end, 200)
 
--- 4. Initialisation Gruvbox
+-- 6. DÉMARRAGE DU THÈME
 load_theme()
+
