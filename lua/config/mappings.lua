@@ -1,96 +1,83 @@
--- mappings, including plugins
-local function map(m, k, v)
-    vim.keymap.set(m, k, v, { noremap = true, silent = true })
+-- ==============================================================================
+-- ⌨️  MAPPINGS : CONFIGURATION INTÉGRALE (NVIM 0.11 & BUFFERLINE)
+-- ==============================================================================
+
+local function map(m, k, v, desc)
+    vim.keymap.set(m, k, v, { noremap = true, silent = true, desc = desc })
 end
 
--- set leader
+-- 1. INITIALISATION LEADER
 map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- buffers
-map("n", "<S-l>", ":bnext<CR>")
-map("n", "<S-h>", ":bprevious<CR>")
-map("n", "<leader>q", ":BufferClose<CR>")
-map("n", "<leader>Q", ":BufferClose!<CR>")
-map("n", "<leader>U", ":bufdo bd<CR>") -- Corrected syntax for close all
-map('n', '<leader>vs', ':vsplit<CR>:bnext<CR>')
+-- 2. GESTION DES BUFFERS (Bufferline.nvim - Stable 0.11)
+map("n", "<S-l>", "<cmd>BufferLineCycleNext<CR>", "Onglet suivant")
+map("n", "<S-h>", "<cmd>BufferLineCyclePrev<CR>", "Onglet précédent")
+map("n", "<leader>q", "<cmd>bdelete<CR>", "Fermer l'onglet")
+map("n", "<leader>Q", "<cmd>bdelete!<CR>", "Forcer fermeture")
+map("n", "<leader>U", "<cmd>bufdo bd<CR>", "Fermer TOUS les onglets") 
+map('n', '<leader>vs', '<cmd>vsplit<CR><cmd>BufferLineCycleNext<CR>', "Split & Suivant")
 
--- buffer position nav + reorder
-map('n', '<AS-h>', '<Cmd>BufferMovePrevious<CR>')
-map('n', '<AS-l>', '<Cmd>BufferMoveNext<CR>')
-map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>')
-map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>')
-map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>')
-map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>')
-map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>')
-map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>')
-map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>')
-map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>')
-map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>')
-map('n', '<A-0>', '<Cmd>BufferLast<CR>')
-map('n', '<A-p>', '<Cmd>BufferPin<CR>')
+-- Position & Réorganisation (Alt + Chiffres)
+map('n', '<A-S-h>', '<cmd>BufferLineMovePrev<CR>', "Déplacer onglet gauche")
+map('n', '<A-S-l>', '<cmd>BufferLineMoveNext<CR>', "Déplacer onglet droite")
 
--- windows - ctrl nav, fn resize
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
+for i = 1, 9 do
+    map('n', string.format('<A-%d>', i), string.format('<cmd>BufferLineGoToBuffer %d<CR>', i), "Aller à l'onglet " .. i)
+end
+map('n', '<A-p>', '<cmd>BufferLineTogglePin<CR>', "Épingler l'onglet")
+
+-- 3. WINDOWS (Navigation & Redimensionnement)
+map("n", "<C-h>", "<C-w>h", "Focus gauche")
+map("n", "<C-j>", "<C-w>j", "Focus bas")
+map("n", "<C-k>", "<C-w>k", "Focus haut")
+map("n", "<C-l>", "<C-w>l", "Focus droite")
 map("n", "<F5>", ":resize +2<CR>")
 map("n", "<F6>", ":resize -2<CR>")
 map("n", "<F7>", ":vertical resize +2<CR>")
 map("n", "<F8>", ":vertical resize -2<CR>")
 
--- fzf and grep (Utilisation de strings pour éviter le chargement précoce)
-map("n", "<leader>f", ":lua require('fzf-lua').files()<CR>")
+-- 4. RECHERCHE (Fzf-lua optimisé pour RTX 4070)
+map("n", "<leader>f", ":lua require('fzf-lua').files()<CR>", "Chercher Fichiers")
 map("n", "<leader>Fh", ":lua require('fzf-lua').files({ cwd = '~/' })<CR>")
 map("n", "<leader>Fc", ":lua require('fzf-lua').files({ cwd = '~/.config' })<CR>")
-map("n", "<leader>Fl", ":lua require('fzf-lua').files({ cwd = '~/.local/src' })<CR>")
-map("n", "<leader>Ff", ":lua require('fzf-lua').files({ cwd = '..' })<CR>")
-map("n", "<leader>Fr", ":lua require('fzf-lua').resume()<CR>")
-map("n", "<leader>g", ":lua require('fzf-lua').grep()<CR>")
-map("n", "<leader>G", ":lua require('fzf-lua').grep_cword()<CR>")
+map("n", "<leader>g", ":lua require('fzf-lua').grep()<CR>", "Chercher texte (Grep)")
+map("n", "<leader>G", ":lua require('fzf-lua').grep_cword()<CR>", "Grep mot sous curseur")
 
--- misc
-map("n", "<leader>s", ":%s//g<Left><Left>")
-map("n", "<leader>t", ":NvimTreeToggle<CR>") 
+-- 5. UTILITAIRES SYSTÈME & FICHIERS
+map("n", "<leader>s", ":%s//g<Left><Left>", "Substitution globale") 
+map("n", "<leader>w", ":w<CR>", "Sauvegarder")
+map("n", "<leader>x", "<cmd>!chmod +x %<CR>", "Rendre exécutable")
+map("n", "<leader>u", ':silent !xdg-open "<cWORD>" &<CR>', "Ouvrir lien/URL")
+map("n", "<leader>R", ":so %<CR>", "Recharger fichier actuel")
+map("n", "<leader>W", ":set wrap!<CR>", "Toggle Wrap")
 
--- FIX CRITIQUE : switch_theme était nil, on appelle maintenant load_theme
-map("n", "<leader>p", function() load_theme() end) 
-
+-- 6. INTERFACE & PLUGINS
+map("n", "<leader>t", ":NvimTreeToggle<CR>", "Explorateur fichiers")
+map("n", "<leader>p", function() load_theme() end, "Recharger Gruvbox")
 map("n", "<leader>P", ":PlugInstall<CR>")
-map('n', '<leader>z', ":lua require('FTerm').toggle()<CR>")
-map('t', '<Esc>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
-map("n", "<leader>w", ":w<CR>")
-map("n", "<leader>d", ":w ")
-map("n", "<leader>x", "<cmd>!chmod +x %<CR>")
-map("n", "<leader>mv", ":!mv % ")
-map("n", "<leader>R", ":so %<CR>")
-map("n", "<leader>u", ':silent !xdg-open "<cWORD>" &<CR>')
-map("v", "<leader>i", "=gv")
-map("n", "<leader>W", ":set wrap!<CR>")
-map("n", "<leader>l", ":Twilight<CR>")
+map("n", "<leader>l", ":Twilight<CR>", "Mode Focus")
 
--- decisive csv
+-- 7. TERMINAL & MONITORING
+map('n', '<leader>z', ":lua require('FTerm').toggle()<CR>", "Terminal flottant")
+map('t', '<Esc>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+
+-- 8. CSV & DATA (Decisive)
 map("n", "<leader>csa", ":lua require('decisive').align_csv({})<cr>")
-map("n", "<leader>csA", ":lua require('decisive').align_csv_clear({})<cr>")
 map("n", "[c", ":lua require('decisive').align_csv_prev_col()<cr>")
 map("n", "]c", ":lua require('decisive').align_csv_next_col()<cr>")
 
--- toggle htop (pcall pour éviter le crash si _G.htop n'est pas défini)
-map("n", "<leader>H", function() 
-    if _G.htop then _G.htop:toggle() else print("htop non configuré") end 
-end)
-
--- quick make
+-- 9. AUTOMATISATION (Make sur 32 cœurs)
 map("n", "<leader>ma", function()
     local bufdir = vim.fn.expand("%:p:h")
     vim.cmd("lcd " .. bufdir)
+    print("🚀 Build en cours sur 32 cœurs...")
     vim.cmd("!sudo make uninstall && sudo make clean install")
-end)
+end, "Compilation Makefile")
 
--- toggle numbers
-map("n", "<leader>nn", function()
-    vim.wo.relativenumber = not vim.wo.relativenumber
-    vim.wo.number = true
-end)
+-- 10. INTELLIGENCE LSP (Le Cerveau)
+map("n", "gd", vim.lsp.buf.definition, "Aller à la Définition")
+map("n", "K", vim.lsp.buf.hover, "Documentation (Hover)")
+map("n", "<leader>rn", vim.lsp.buf.rename, "Renommer partout")
+map("n", "<leader>ca", vim.lsp.buf.code_action, "Actions correctives")

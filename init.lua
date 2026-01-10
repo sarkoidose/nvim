@@ -19,7 +19,7 @@ Plug('ellisonleao/gruvbox.nvim', { ['as'] = 'gruvbox' })
 Plug('nvim-lualine/lualine.nvim')
 Plug('nvim-tree/nvim-web-devicons')
 Plug('folke/which-key.nvim')
-Plug('romgrk/barbar.nvim')
+Plug('akinsho/bufferline.nvim', { ['tag'] = '*' }) -- ✅ Remplacement de Barbar
 Plug('goolord/alpha-nvim')
 Plug('norcalli/nvim-colorizer.lua')
 -- Outils
@@ -36,6 +36,14 @@ Plug('ron-rs/ron.vim')
 Plug('MeanderingProgrammer/render-markdown.nvim')
 Plug('emmanueltouzery/decisive.nvim')
 Plug('folke/twilight.nvim')
+-- Intelligence & LSP
+Plug('williamboman/mason.nvim')
+Plug('williamboman/mason-lspconfig.nvim')
+Plug('neovim/nvim-lspconfig')
+--  Autocomplétion
+Plug('hrsh7th/nvim-cmp')
+Plug('hrsh7th/cmp-nvim-lsp')
+Plug('L3MON4D3/LuaSnip')
 vim.call('plug#end')
 
 -- 1. Bases (Indépendantes des plugins)
@@ -45,7 +53,6 @@ require("config.autocmd")
 
 -- 2. Plugins UI essentiels (Chargement immédiat)
 require("plugins.alpha")
-require("plugins.barbar")
 require("plugins.colorizer")
 require("plugins.comment")
 require("plugins.gitsigns")
@@ -63,6 +70,12 @@ vim.defer_fn(function()
     require("plugins.treesitter")
     require("plugins.twilight")
     require("plugins.which-key")
+    
+    -- 📂 GESTION DES ONGLETS (Stable 0.11)
+    require("plugins.bufferline")
+
+    -- 🧠 ACTIVATION DU CERVEAU (LSP)
+    require("plugins.lsp")
 
     -- Tentative sécurisée de chargement des mappings
     local ok, err = pcall(require, "config.mappings")
