@@ -82,3 +82,4 @@ end, 200)
 -- 6. DÉMARRAGE DU THÈME
 load_theme()
 
+-- Test de synchro le 03 fevrier 2026
