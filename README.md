@@ -1,4 +1,6 @@
-# 🌌 Gnosis Neovim Config (based on Bread on Penguins > https://github.com/BreadOnPenguins/nvim)
+# 🌌 Gnosis Neovim Config 
+
+(based on Bread on Penguins > https://github.com/BreadOnPenguins/nvim)
 
 Une configuration Neovim minimaliste, rapide et robuste, optimisée pour **Arch Linux** sur un laptop ROG. Ce setup privilégie la clarté visuelle et l'efficacité du workflow (KISS).
 
