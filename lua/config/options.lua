@@ -21,7 +21,7 @@ local options = {
 
 	smarttab = true, --indentation stuff
 	cindent = true,
-	autoindent = false,
+	autoindent = false, -- Disabled to avoid conflicts with auto-indentation plugins or for specific workflow.
 	tabstop = 4, --visual width of tab
 
 	foldmethod = "expr",
