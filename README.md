@@ -18,7 +18,7 @@ Une configuration Neovim minimaliste, rapide et robuste, optimisée pour **Arch 
 
 | Catégorie | Outils |
 | :--- | :--- |
-| **Gestionnaire** | Lazy.nvim / Packer |
+| **Gestionnaire** | Vim-Plug |
 | **Interface** | Bufferline, Lualine, Nvim-tree |
 | **LSP** | Mason, Nvim-lspconfig |
 | **Completion** | Nvim-cmp, LuaSnip |
