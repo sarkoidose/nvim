@@ -1,5 +1,4 @@
 -- Force l'affichage permanent et les couleurs vraies (RTX 4070)
-vim.opt.termguicolors = true
 vim.opt.showtabline = 2
 
 local status, bufferline = pcall(require, "bufferline")
@@ -21,8 +20,7 @@ bufferline.setup({
             return " " .. icon .. count
         end,
         offsets = {
-            {
-                filetype = "NvimTree",
+            {\n                filetype = "NvimTree",
                 text = "EXPLORATEUR",
                 text_align = "left",
                 separator = true
