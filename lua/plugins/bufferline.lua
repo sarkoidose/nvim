@@ -20,7 +20,8 @@ bufferline.setup({
             return " " .. icon .. count
         end,
         offsets = {
-            {\n                filetype = "NvimTree",
+            {
+                filetype = "NvimTree",
                 text = "EXPLORATEUR",
                 text_align = "left",
                 separator = true
