@@ -41,8 +41,8 @@ vim.call('plug#begin')
     Plug('folke/twilight.nvim', { ['tag'] = 'v1.0.0' })
 
     -- Cerveau (LSP) & Complétion
-    Plug('williamboman/mason.nvim', { ['tag'] = '2.0.1' }) -- Changed
-    Plug('williamboman/mason-lspconfig.nvim')
+    Plug('williamboman/mason.nvim', { ['tag'] = '2.0.1' })
+    Plug('williamboman/mason-lspconfig.nvim', { ['tag'] = 'v1.29.0' }) -- Changed
     Plug('neovim/nvim-lspconfig')
     Plug('hrsh7th/nvim-cmp')
     Plug('hrsh7th/cmp-nvim-lsp')
