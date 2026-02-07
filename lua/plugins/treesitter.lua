@@ -1,6 +1,6 @@
 local status, configs = pcall(require, "nvim-treesitter.configs")
-if not status then 
-    return 
+if not status then
+    return
 end
 
 configs.setup {
@@ -15,4 +15,5 @@ configs.setup {
             node_decremental = "grm",
         },
     },
+    indent = { enable = true },
 }
