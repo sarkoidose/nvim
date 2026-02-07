@@ -42,11 +42,11 @@ vim.call('plug#begin')
 
     -- Cerveau (LSP) & Complétion
     Plug('williamboman/mason.nvim', { ['tag'] = '2.0.1' })
-    Plug('williamboman/mason-lspconfig.nvim', { ['tag'] = 'v1.29.0' }) -- Changed
+    Plug('williamboman/mason-lspconfig.nvim', { ['tag'] = 'v1.29.0' })
     Plug('neovim/nvim-lspconfig')
     Plug('hrsh7th/nvim-cmp')
     Plug('hrsh7th/cmp-nvim-lsp')
-    Plug('L3MON4D3/LuaSnip')
+    Plug('L3MON4D3/LuaSnip', { ['tag'] = 'v2.4.1' }) -- Changed
     Plug('hrsh7th/cmp-buffer')
     Plug('hrsh7th/cmp-path')
 vim.call('plug#end')
