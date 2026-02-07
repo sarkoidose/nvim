@@ -22,12 +22,12 @@ vim.call('plug#begin')
     Plug('akinsho/bufferline.nvim', { ['tag'] = 'v4.9.1' })
     Plug('goolord/alpha-nvim')
     Plug('norcalli/nvim-colorizer.lua')
-    Plug('folke/which-key.nvim', { ['tag'] = 'v3.17.0' }) -- Changed
+    Plug('folke/which-key.nvim', { ['tag'] = 'v3.17.0' })
 
     -- Outils & Navigation
     Plug('nvim-treesitter/nvim-treesitter')
     Plug('mfussenegger/nvim-lint')
-    Plug('nvim-tree/nvim-tree.lua')
+    Plug('nvim-tree/nvim-tree.lua', { ['tag'] = '1.15.0' }) -- Changed
     Plug('windwp/nvim-autopairs')
     Plug('lewis6991/gitsigns.nvim')
     Plug('numToStr/Comment.nvim')
@@ -65,7 +65,8 @@ require("plugins.lualine")
 require("plugins.nvim-lint")
 require("plugins.render-markdown")
 
--- 5. CHARGEMENT DIFFÉRÉ (+200ms pour la réactivité Ghostty)\nvim.defer_fn(function()
+-- 5. CHARGEMENT DIFFÉRÉ (+200ms pour la réactivité Ghostty)
+vim.defer_fn(function()
     require("plugins.autopairs")
     require("plugins.fterm")
     require("plugins.fzf-lua")
