@@ -30,13 +30,13 @@ vim.call('plug#begin')
     Plug('nvim-tree/nvim-tree.lua', { ['tag'] = '1.15.0' })
     Plug('windwp/nvim-autopairs', { ['tag'] = '0.11.0' })
     Plug('lewis6991/gitsigns.nvim', { ['tag'] = '0.9.0' })
-    Plug('numToStr/Comment.nvim', { ['tag'] = 'v0.8.0' }) -- Changed
+    Plug('numToStr/Comment.nvim', { ['tag'] = 'v0.8.0' })
     Plug('ibhagwan/fzf-lua')
     Plug('numToStr/FTerm.nvim')
 
     -- Syntaxe & Langages
     Plug('ron-rs/ron.vim')
-    Plug('MeanderingProgrammer/render-markdown.nvim')
+    Plug('MeanderingProgrammer/render-markdown.nvim', { ['tag'] = 'v8.11.0' }) -- Changed
     Plug('emmanueltouzery/decisive.nvim')
     Plug('folke/twilight.nvim')
 
