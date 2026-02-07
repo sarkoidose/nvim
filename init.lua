@@ -36,9 +36,9 @@ vim.call('plug#begin')
 
     -- Syntaxe & Langages
     Plug('ron-rs/ron.vim')
-    Plug('MeanderingProgrammer/render-markdown.nvim', { ['tag'] = 'v8.11.0' }) -- Changed
+    Plug('MeanderingProgrammer/render-markdown.nvim', { ['tag'] = 'v8.11.0' })
     Plug('emmanueltouzery/decisive.nvim')
-    Plug('folke/twilight.nvim')
+    Plug('folke/twilight.nvim', { ['tag'] = 'v1.0.0' }) -- Changed
 
     -- Cerveau (LSP) & Complétion
     Plug('williamboman/mason.nvim')
