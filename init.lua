@@ -27,8 +27,8 @@ vim.call('plug#begin')
     -- Outils & Navigation
     Plug('nvim-treesitter/nvim-treesitter')
     Plug('mfussenegger/nvim-lint')
-    Plug('nvim-tree/nvim-tree.lua', { ['tag'] = '1.15.0' }) -- Changed
-    Plug('windwp/nvim-autopairs')
+    Plug('nvim-tree/nvim-tree.lua', { ['tag'] = '1.15.0' })
+    Plug('windwp/nvim-autopairs', { ['tag'] = '0.11.0' }) -- Changed
     Plug('lewis6991/gitsigns.nvim')
     Plug('numToStr/Comment.nvim')
     Plug('ibhagwan/fzf-lua')
