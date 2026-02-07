@@ -1,4 +1,4 @@
-# 🌌 Gnosis Neovim Config 
+# Gnosis Neovim Config 
 
 (based on Bread on Penguins > https://github.com/BreadOnPenguins/nvim)
 
@@ -6,7 +6,7 @@ Une configuration Neovim minimaliste, rapide et robuste, optimisée pour **Arch 
 
 ---
 
-## 🧠 Philosophie "Gnosis"
+## Philosophie "Gnosis"
 * **Performance :** Chargement optimisé avec les plugins essentiels.
 * **Stabilité :** Migration de `barbar` vers `bufferline` pour une gestion des onglets plus moderne.
 * **Intelligence :** Autocomplétion riche (LSP) avec support natif des snippets LuaSnip.
@@ -14,7 +14,7 @@ Une configuration Neovim minimaliste, rapide et robuste, optimisée pour **Arch 
 
 ---
 
-## 🛠️ Stack Technique
+## Stack Technique
 
 | Catégorie | Outils |
 | :--- | :--- |
@@ -28,7 +28,7 @@ Une configuration Neovim minimaliste, rapide et robuste, optimisée pour **Arch 
 
 ---
 
-## 🚀 Installation
+## Installation
 
 Pour cloner cette configuration sur un nouveau système Arch :
 
