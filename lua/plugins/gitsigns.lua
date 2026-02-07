@@ -44,7 +44,7 @@ require('gitsigns').setup {
     border = 'single',
     style = 'minimal',
     relative = 'cursor',
-    row = 0,
+    row = 8, -- Changed from 0 to 8
     col = 1
   },
 }
