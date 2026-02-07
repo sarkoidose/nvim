@@ -19,10 +19,10 @@ vim.call('plug#begin')
     Plug('ellisonleao/gruvbox.nvim', { ['as'] = 'gruvbox' })
     Plug('nvim-lualine/lualine.nvim')
     Plug('nvim-tree/nvim-web-devicons')
-    Plug('akinsho/bufferline.nvim', { ['tag'] = 'v4.9.1' }) -- Changed
+    Plug('akinsho/bufferline.nvim', { ['tag'] = 'v4.9.1' })
     Plug('goolord/alpha-nvim')
     Plug('norcalli/nvim-colorizer.lua')
-    Plug('folke/which-key.nvim')
+    Plug('folke/which-key.nvim', { ['tag'] = 'v3.17.0' }) -- Changed
 
     -- Outils & Navigation
     Plug('nvim-treesitter/nvim-treesitter')
@@ -65,8 +65,7 @@ require("plugins.lualine")
 require("plugins.nvim-lint")
 require("plugins.render-markdown")
 
--- 5. CHARGEMENT DIFFÉRÉ (+200ms pour la réactivité Ghostty)
-vim.defer_fn(function()
+-- 5. CHARGEMENT DIFFÉRÉ (+200ms pour la réactivité Ghostty)\nvim.defer_fn(function()
     require("plugins.autopairs")
     require("plugins.fterm")
     require("plugins.fzf-lua")
