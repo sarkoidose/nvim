@@ -20,6 +20,7 @@ Une configuration Neovim minimaliste, rapide et robuste, optimisée pour **Arch 
 | :--- | :--- |
 | **Gestionnaire** | Vim-Plug |
 | **Interface** | Bufferline, Lualine, Nvim-tree |
+| **Outils & Navigation** | Gitsigns |
 | **LSP** | Mason, Nvim-lspconfig |
 | **Completion** | Nvim-cmp, LuaSnip |
 | **Parsing** | Treesitter |
@@ -37,3 +38,4 @@ cd ~/.config
 
 # Cloner le dépôt
 git clone [https://github.com/sarkoidose/nvim.git](https://github.com/sarkoidose/nvim.git)
+```
