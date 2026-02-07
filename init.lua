@@ -19,7 +19,7 @@ vim.call('plug#begin')
     Plug('ellisonleao/gruvbox.nvim', { ['as'] = 'gruvbox' })
     Plug('nvim-lualine/lualine.nvim')
     Plug('nvim-tree/nvim-web-devicons')
-    Plug('akinsho/bufferline.nvim', { ['tag'] = '*' })
+    Plug('akinsho/bufferline.nvim', { ['tag'] = 'v4.9.1' }) -- Changed
     Plug('goolord/alpha-nvim')
     Plug('norcalli/nvim-colorizer.lua')
     Plug('folke/which-key.nvim')
@@ -47,8 +47,8 @@ vim.call('plug#begin')
     Plug('hrsh7th/nvim-cmp')
     Plug('hrsh7th/cmp-nvim-lsp')
     Plug('L3MON4D3/LuaSnip')
-    Plug('hrsh7th/cmp-buffer') -- Added
-    Plug('hrsh7th/cmp-path')   -- Added
+    Plug('hrsh7th/cmp-buffer')
+    Plug('hrsh7th/cmp-path')
 vim.call('plug#end')
 
 -- 3. CHARGEMENT DES BASES
