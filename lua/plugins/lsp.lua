@@ -46,6 +46,10 @@ cmp.setup({
     snippet = {
         expand = function(args) require('luasnip').lsp_expand(args.body) end
     },
+    window = { -- Added
+      completion = cmp.config.window.bordered(), -- Added
+      documentation = cmp.config.window.bordered(), -- Added
+    }, -- Added
     mapping = cmp.mapping.preset.insert({
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
