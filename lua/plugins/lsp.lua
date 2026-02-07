@@ -1,9 +1,3 @@
--- 1. SILENCE TOTAL (On étouffe les warnings de Neovim 0.11)
-local original_notify = vim.notify
-vim.notify = function(msg, level, opts)
-    if msg:find("lspconfig") or msg:find("deprecated") then return end
-    original_notify(msg, level, opts)
-end
 
 -- 2. RÉPARATION DU PATH (Pour éviter l'erreur "Spawning language server failed")
 -- Cela force Neovim à regarder dans le dossier de Mason pour trouver les binaires
@@ -27,4 +21,39 @@ require("mason-lspconfig").setup({
         ["lua_ls"] = function()
             lspconfig.lua_ls.setup({
                 capabilities = caps,
-                settings = {\n                    Lua = {\n                        diagnostics = {\n                            -- Définit 'vim' comme global pour éviter les erreurs de syntaxe\n                            globals = { 'vim', 'Plug' },\n                        },\n                        workspace = {\n                            -- Fait connaître l'API de Neovim au serveur\n                            library = vim.api.nvim_get_runtime_file("", true),\n                            checkThirdParty = false,\n                        },\n                        telemetry = { enable = false },\n                    },\n                },\n            })\n        end,\n    }\n})\n\n-- 4. CONFIGURATION DU MENU CMP (Autocomplétion)\nlocal cmp = require('cmp')\ncmp.setup({\n    snippet = { \n        expand = function(args) require('luasnip').lsp_expand(args.body) end \n    },\n    mapping = cmp.mapping.preset.insert({\n        ['<C-Space>'] = cmp.mapping.complete(),\n        ['<CR>'] = cmp.mapping.confirm({ select = true }),\n        ['<Tab>'] = cmp.mapping.select_next_item(),\n        ['<S-Tab>'] = cmp.mapping.select_prev_item(),\n    }),\n    sources = cmp.config.sources({ \n        { name = 'nvim_lsp' },\n        { name = 'luasnip' },\n    })\n})\n
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            -- Définit 'vim' comme global pour éviter les erreurs de syntaxe
+                            globals = { 'vim', 'Plug' },
+                        },
+                        workspace = {
+                            -- Fait connaître l'API de Neovim au serveur
+                            library = vim.api.nvim_get_runtime_file("", true),
+                            checkThirdParty = false,
+                        },
+                        telemetry = { enable = false },
+                    },
+                },
+            })
+        end,
+    }
+})
+
+-- 4. CONFIGURATION DU MENU CMP (Autocomplétion)
+local cmp = require('cmp')
+cmp.setup({
+    snippet = {
+        expand = function(args) require('luasnip').lsp_expand(args.body) end
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<Tab>'] = cmp.mapping.select_next_item(),
+        ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+    }),
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+    })
+})
