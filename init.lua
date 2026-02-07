@@ -16,7 +16,7 @@ vim.loader.enable() -- Turbo-boost au démarrage
 -- 2. DÉCLARATION DES PLUGINS
 vim.call('plug#begin')
     -- UI & Thème
-    Plug('ellisonleao/gruvbox.nvim', { ['as'] = 'gruvbox' }) 
+    Plug('ellisonleao/gruvbox.nvim', { ['as'] = 'gruvbox' })
     Plug('nvim-lualine/lualine.nvim')
     Plug('nvim-tree/nvim-web-devicons')
     Plug('akinsho/bufferline.nvim', { ['tag'] = '*' })
@@ -47,6 +47,8 @@ vim.call('plug#begin')
     Plug('hrsh7th/nvim-cmp')
     Plug('hrsh7th/cmp-nvim-lsp')
     Plug('L3MON4D3/LuaSnip')
+    Plug('hrsh7th/cmp-buffer') -- Added
+    Plug('hrsh7th/cmp-path')   -- Added
 vim.call('plug#end')
 
 -- 3. CHARGEMENT DES BASES
@@ -64,7 +66,7 @@ require("plugins.nvim-lint")
 require("plugins.render-markdown")
 
 -- 5. CHARGEMENT DIFFÉRÉ (+200ms pour la réactivité Ghostty)
-vim.defer_fn(function() 
+vim.defer_fn(function()
     require("plugins.autopairs")
     require("plugins.fterm")
     require("plugins.fzf-lua")
