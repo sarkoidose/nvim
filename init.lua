@@ -29,8 +29,8 @@ vim.call('plug#begin')
     Plug('mfussenegger/nvim-lint')
     Plug('nvim-tree/nvim-tree.lua', { ['tag'] = '1.15.0' })
     Plug('windwp/nvim-autopairs', { ['tag'] = '0.11.0' })
-    Plug('lewis6991/gitsigns.nvim', { ['tag'] = '0.9.0' }) -- Changed
-    Plug('numToStr/Comment.nvim')
+    Plug('lewis6991/gitsigns.nvim', { ['tag'] = '0.9.0' })
+    Plug('numToStr/Comment.nvim', { ['tag'] = 'v0.8.0' }) -- Changed
     Plug('ibhagwan/fzf-lua')
     Plug('numToStr/FTerm.nvim')
 
