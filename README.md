@@ -1,4 +1,4 @@
-# Gnosis Neovim Config 
+# Gnosis a French Neovim Config 
 
 (based on Bread on Penguins > https://github.com/BreadOnPenguins/nvim)
 
