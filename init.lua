@@ -1,5 +1,5 @@
 -- =============================================================================
--- 🚀 BREAD'S NEOVIM : FORTERESSE GRUVBOX (32-CORES OPTIMIZED)
+-- 🚀 BREAD'S NEOVIM : FORTERESSE GRUVBOX (FULL RESTORED)
 -- =============================================================================
 
 -- 1. BOOTSTRAP (Vim-Plug)
@@ -46,7 +46,7 @@ vim.call('plug#begin')
     Plug('neovim/nvim-lspconfig')
     Plug('hrsh7th/nvim-cmp')
     Plug('hrsh7th/cmp-nvim-lsp')
-    Plug('L3MON4D3/LuaSnip', { ['tag'] = 'v2.4.1' }) -- Changed
+    Plug('L3MON4D3/LuaSnip', { ['tag'] = 'v2.4.1' })
     Plug('hrsh7th/cmp-buffer')
     Plug('hrsh7th/cmp-path')
 vim.call('plug#end')
@@ -57,21 +57,26 @@ require("config.options")
 require("config.autocmd")
 
 -- 4. CHARGEMENT DES PLUGINS UI (Immédiat)
+-- Ici on met ce qui doit être visible tout de suite
 require("plugins.alpha")
 require("plugins.colorizer")
 require("plugins.comment")
 require("plugins.gitsigns")
 require("plugins.lualine")
 require("plugins.nvim-lint")
+
+-- FIX CRITIQUE : Treesitter et Markdown doivent être ici
+require("plugins.treesitter")
 require("plugins.render-markdown")
 
--- 5. CHARGEMENT DIFFÉRÉ (+200ms pour la réactivité Ghostty)
+-- 5. CHARGEMENT DIFFÉRÉ (+200ms)
+-- Ici on met le reste pour que Neovim s'ouvre vite
 vim.defer_fn(function()
     require("plugins.autopairs")
     require("plugins.fterm")
     require("plugins.fzf-lua")
     require("plugins.nvim-tree")
-    require("plugins.treesitter")
+    -- Treesitter a été déplacé au-dessus, on ne le remet pas ici
     require("plugins.twilight")
     require("plugins.which-key")
     require("plugins.bufferline")
@@ -83,5 +88,3 @@ end, 200)
 
 -- 6. DÉMARRAGE DU THÈME
 load_theme()
-
--- Test de synchro le 03 fevrier 2026
