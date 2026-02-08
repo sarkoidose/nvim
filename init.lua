@@ -1,5 +1,5 @@
 -- =============================================================================
--- 🚀 BREAD'S NEOVIM : FORTERESSE GRUVBOX (FULL RESTORED)
+-- 🚀 BREAD'S NEOVIM : FORTERESSE GRUVBOX (FINAL STABLE)
 -- =============================================================================
 
 -- 1. BOOTSTRAP (Vim-Plug)
@@ -12,6 +12,12 @@ end
 
 local Plug = vim.fn['plug#']
 vim.loader.enable() -- Turbo-boost au démarrage
+
+-- ====================================================
+-- 🚨 FIX CRITIQUE : Activation des couleurs TrueColor
+-- Doit être ici AVANT que les plugins ne soient lus
+-- ====================================================
+vim.opt.termguicolors = true
 
 -- 2. DÉCLARATION DES PLUGINS
 vim.call('plug#begin')
@@ -57,7 +63,6 @@ require("config.options")
 require("config.autocmd")
 
 -- 4. CHARGEMENT DES PLUGINS UI (Immédiat)
--- Ici on met ce qui doit être visible tout de suite
 require("plugins.alpha")
 require("plugins.colorizer")
 require("plugins.comment")
@@ -70,13 +75,11 @@ require("plugins.treesitter")
 require("plugins.render-markdown")
 
 -- 5. CHARGEMENT DIFFÉRÉ (+200ms)
--- Ici on met le reste pour que Neovim s'ouvre vite
 vim.defer_fn(function()
     require("plugins.autopairs")
     require("plugins.fterm")
     require("plugins.fzf-lua")
     require("plugins.nvim-tree")
-    -- Treesitter a été déplacé au-dessus, on ne le remet pas ici
     require("plugins.twilight")
     require("plugins.which-key")
     require("plugins.bufferline")

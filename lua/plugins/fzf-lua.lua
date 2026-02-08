@@ -1,5 +1,5 @@
 require("fzf-lua").setup{
-	file_icon_padding = ' ',
+        file_icon_padding = ' ',
 --   -- MISC GLOBAL SETUP OPTIONS, SEE BELOW
 --   -- fzf_bin = ...,
 --   winopts = { ...  },     -- UI Options

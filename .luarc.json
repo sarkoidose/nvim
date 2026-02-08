@@ -1,0 +1,11 @@
+{
+  "configs": [
+    {
+      "compiler": {
+        "builtins": {
+          "basic": true
+        }
+      }
+    }
+  ]
+}

@@ -10,9 +10,9 @@ configs.setup {
         enable = true,
         keymaps = {
             init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
+            node_increment_al = "grn",
+            scope_increment_al = "grc",
+            node_decrement_al = "grm",
         },
     },
     indent = { enable = true },
