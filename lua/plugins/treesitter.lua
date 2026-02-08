@@ -4,7 +4,7 @@ if not status then
 end
 
 configs.setup {
-    ensure_installed = { "bash", "c", "css", "cpp", "go", "html", "java", "javascript", "lua", "python", "rust", "typescript", "vim" },
+    ensure_installed = { "bash", "c", "css", "cpp", "go", "html", "java", "javascript", "lua", "python", "rust", "typescript", "vim", "markdown", "markdown_inline" },
     highlight = { enable = true, additional_vim_regex_highlighting = false },
     incremental_selection = {
         enable = true,

@@ -1,4 +1,3 @@
-
 -- 2. RÉPARATION DU PATH (Pour éviter l'erreur "Spawning language server failed")
 -- Cela force Neovim à regarder dans le dossier de Mason pour trouver les binaires
 -- local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
@@ -6,7 +5,6 @@
 
 -- 3. INITIALISATION MASON & LSPCONFIG
 require("mason").setup()
-local lspconfig = require("lspconfig")
 local caps = require('cmp_nvim_lsp').default_capabilities()
 
 require("mason-lspconfig").setup({
@@ -14,12 +12,13 @@ require("mason-lspconfig").setup({
     handlers = {
         -- Configuration par défaut pour tous les serveurs
         function (server_name)
-            lspconfig[server_name].setup({ capabilities = caps })
+            vim.lsp.config[server_name] = { capabilities = caps }
+            vim.lsp.enable(server_name)
         end,
 
         -- Surcharge spécifique pour Lua (Élimine les 28 erreurs)
         ["lua_ls"] = function()
-            lspconfig.lua_ls.setup({
+            vim.lsp.config.lua_ls = {
                 capabilities = caps,
                 settings = {
                     Lua = {
@@ -35,7 +34,8 @@ require("mason-lspconfig").setup({
                         telemetry = { enable = false },
                     },
                 },
-            })
+            }
+            vim.lsp.enable('lua_ls')
         end,
     }
 })
@@ -46,10 +46,10 @@ cmp.setup({
     snippet = {
         expand = function(args) require('luasnip').lsp_expand(args.body) end
     },
-    window = { -- Added
-      completion = cmp.config.window.bordered(), -- Added
-      documentation = cmp.config.window.bordered(), -- Added
-    }, -- Added
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
     mapping = cmp.mapping.preset.insert({
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
@@ -59,7 +59,7 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = 'buffer' }, -- Added
-        { name = 'path' },   -- Added
+        { name = 'buffer' },
+        { name = 'path' },
     })
 })
