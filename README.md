@@ -1,41 +1,63 @@
-# Gnosis a French Neovim Config 
+# 🚀 Gnosis Neovim
 
-(based on Bread on Penguins > https://github.com/BreadOnPenguins/nvim)
+> A minimalist, high-performance Neovim configuration optimized for **Arch Linux** and a power-user workflow.
 
-Une configuration Neovim minimaliste, rapide et robuste, optimisée pour **Arch Linux** sur un laptop ROG. Ce setup privilégie la clarté visuelle et l'efficacité du workflow (KISS).
-
----
-
-## Philosophie "Gnosis"
-* **Performance :** Chargement optimisé avec les plugins essentiels.
-* **Stabilité :** Migration de `barbar` vers `bufferline` pour une gestion des onglets plus moderne.
-* **Intelligence :** Autocomplétion riche (LSP) avec support natif des snippets LuaSnip.
-* **Esthétique :** Transparence gérée via Picom (95% d'opacité) pour un look "verre dépoli".
+![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
+![Stars](https://img.shields.io/github/stars/sarkoidose/nvim?style=flat-square)
+![Language](https://img.shields.io/github/languages/top/sarkoidose/nvim?style=flat-square)
+![Neovim](https://img.shields.io/badge/Neovim-0.11+-57A143?style=flat-square&logo=neovim)
 
 ---
 
-## Stack Technique
+## 👁️ Philosophy "Gnosis"
 
-| Catégorie | Outils |
+*   **Performance:** Optimized loading using `vim-plug` and deferred initialization.
+*   **Stability:** Rock-solid buffer management with `bufferline`.
+*   **Intelligence:** Full LSP support, smart completion, and specialized data tools.
+*   **Aesthetics:** High-contrast **Gruvbox** theme with transparency support.
+
+## ✨ Features
+
+- 🎨 **Gruvbox High-Contrast**: Beautiful, eye-friendly colors.
+- 📂 **File Management**: `Nvim-Tree` and `fzf-lua` for blazing fast navigation.
+- 🧠 **LSP & Autocomplete**: Powered by `lspconfig`, `mason`, and `nvim-cmp`.
+- 📊 **Data Science Ready**: CSV alignment with `decisive.nvim` and Markdown rendering.
+- 🛠️ **Developer Tools**: Integrated terminal (`FTerm`), Git signs, and quick `make` automation.
+- ⚡ **Turbo-Boost**: Lua-based configuration with pre-compiled speed improvements.
+
+## ⌨️ Keybindings (Leader is `<Space>`)
+
+| Key | Action |
 | :--- | :--- |
-| **Gestionnaire** | Vim-Plug |
-| **Interface** | Bufferline, Lualine, Nvim-tree |
-| **Outils & Navigation** | Gitsigns |
-| **LSP** | Mason, Nvim-lspconfig |
-| **Completion** | Nvim-cmp, LuaSnip |
-| **Parsing** | Treesitter |
-| **Thème** | Gruvbox (High Contrast) |
+| `Space + f` | Find Files (`fzf-lua`) |
+| `Space + g` | Live Grep search |
+| `Space + t` | Toggle File Explorer (`Nvim-Tree`) |
+| `Space + z` | Toggle Floating Terminal (`FTerm`) |
+| `Shift + h/l` | Navigate buffers (left/right) |
+| `Space + q` | Close current buffer |
+| `Space + w` | Save file |
+| `Space + l` | Toggle Focus Mode (`Twilight`) |
+| `gd` | Go to definition |
+| `K` | Hover documentation |
+
+## 🛠️ Installation
+
+### Prerequisites
+- Neovim 0.11+
+- A Nerd Font (e.g., JetBrainsMono Nerd Font)
+- Build tools: `gcc`, `make`, `git`, `curl`
+
+### Steps
+```bash
+# Backup existing config
+mv ~/.config/nvim ~/.config/nvim.bak
+
+# Clone Gnosis
+git clone https://github.com/sarkoidose/nvim.git ~/.config/nvim
+
+# Launch Neovim (it will auto-install plugins)
+nvim
+```
 
 ---
-
-## Installation
-
-Pour cloner cette configuration sur un nouveau système Arch :
-
-```zsh
-# Aller dans le dossier config
-cd ~/.config
-
-# Cloner le dépôt
-git clone [https://github.com/sarkoidose/nvim.git](https://github.com/sarkoidose/nvim.git)
-```
+*Created by [sarkoidose](https://github.com/sarkoidose) with ❤️ for the Arch Linux community.*
