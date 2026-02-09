@@ -11,6 +11,7 @@
 
 ## 👁️ Philosophy "Gnosis"
 
+*   **Origin:** Based on the excellent work by [BreadOnPenguins](https://github.com/BreadOnPenguins/nvim).
 *   **Performance:** Optimized loading using `vim-plug` and deferred initialization.
 *   **Stability:** Rock-solid buffer management with `bufferline`.
 *   **Intelligence:** Full LSP support, smart completion, and specialized data tools.
