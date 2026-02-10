@@ -1,4 +1,4 @@
-# Gnosis Neovim
+# 🚀 Gnosis Neovim
 
 > A minimalist, high-performance Neovim configuration optimized for **Arch Linux**.
 
