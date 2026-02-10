@@ -1,4 +1,4 @@
-# 🚀 Gnosis Neovim
+# Gnosis Neovim
 
 > A minimalist, high-performance Neovim configuration optimized for **Arch Linux**.
 
@@ -15,29 +15,29 @@
 *   **Performance:** Optimized loading using `vim-plug` and deferred initialization.
 *   **Stability:** Rock-solid buffer management with `bufferline`.
 *   **Intelligence:** Full LSP support, smart completion, and specialized data tools.
-*   **Aesthetics:** High-contrast **Gruvbox** theme with transparency support.
+*   **Aesthetics:** High-contrast Gruvbox theme with transparency support.
 
 ## Features
 
 - **Gruvbox High-Contrast**: Refined, eye-friendly colors.
-- **File Management**: `Nvim-Tree` and `fzf-lua` for fast navigation.
-- **LSP & Autocomplete**: Powered by `lspconfig`, `mason`, and `nvim-cmp`.
-- **Data Science Support**: CSV alignment with `decisive.nvim` and Markdown rendering.
-- **Developer Tools**: Integrated terminal (`FTerm`), Git signs, and `make` automation.
+- **File Management**: Nvim-Tree and fzf-lua for fast navigation.
+- **LSP & Autocomplete**: Powered by lspconfig, mason, and nvim-cmp.
+- **Data Science Support**: CSV alignment with decisive.nvim and Markdown rendering.
+- **Developer Tools**: Integrated terminal (FTerm), Git signs, and make automation.
 - **Turbo-Boost**: Lua-based configuration with performance improvements.
 
 ## Keybindings (Leader: `<Space>`)
 
 | Key | Action |
 | :--- | :--- |
-| `Leader + f` | Find Files (`fzf-lua`) |
+| `Leader + f` | Find Files (fzf-lua) |
 | `Leader + g` | Live Grep search |
-| `Leader + t` | Toggle File Explorer (`Nvim-Tree`) |
-| `Leader + z` | Toggle Floating Terminal (`FTerm`) |
+| `Leader + t` | Toggle File Explorer (Nvim-Tree) |
+| `Leader + z` | Toggle Floating Terminal (FTerm) |
 | `Shift + h/l` | Navigate buffers (left/right) |
 | `Leader + q` | Close current buffer |
 | `Leader + w` | Save file |
-| `Leader + l` | Toggle Focus Mode (`Twilight`) |
+| `Leader + l` | Toggle Focus Mode (Twilight) |
 | `gd` | Go to definition |
 | `K` | Hover documentation |
 
