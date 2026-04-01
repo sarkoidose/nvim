@@ -32,7 +32,7 @@ render.setup({
         position = 'left',
         width = 'block',
         border = 'thick',
-        highlight = 'GruvboxBg1', -- Fond subtil pour les blocs de code
+        highlight = 'RenderMarkdownCode',
     },
     link = {
         enabled = true,
@@ -64,4 +64,10 @@ render.setup({
         icons = { '●', '○', '◆', '◇' },
     },
     latex = { enabled = false }, -- Désactivé pour éviter les erreurs si pas installé
+    pipe_table = {
+        enabled = true,
+        style = 'full',
+        border = { '┌', '┬', '┐', '├', '┼', '┤', '└', '┴', '┘', '│', '─' },
+    },
 })
+
